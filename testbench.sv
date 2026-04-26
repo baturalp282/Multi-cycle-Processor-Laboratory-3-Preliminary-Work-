@@ -29,7 +29,7 @@ always @(negedge clk) begin
                 $display("Simulation succeeded !");
                 $stop;
             
-            end else if (DataAdr !== 96) begin  //!!!! BURAYI DEĞİŞTİRDİK
+            end else if (DataAdr !== 96) begin  
                 $display("Simulation failed");
                 $stop;
             end
