@@ -97,7 +97,7 @@ module main_fsm( input logic clk,
             end
             DECODE: begin
                 ALUSrcA   = 2'b01;
-                ALUSrcB   = 2'b01; // dallanma için 2'b01 yaptık ki diğer aşamanın bilgisini extend'Den çeksin
+                ALUSrcB   = 2'b01; 
                 ALUOp     = 2'b00;
             end
             MEMADR: begin
