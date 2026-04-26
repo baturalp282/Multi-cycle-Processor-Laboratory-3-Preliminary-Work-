@@ -14,7 +14,6 @@ module alu(input  logic [31:0] SrcA, SrcB,
       3'b001: ALUResult = sum;         // subtract
       3'b010: ALUResult = SrcA & SrcB; // and
       3'b011: ALUResult = SrcA | SrcB; // or
-      3'b100: ALUResult = SrcA ^ SrcB; // xor -> New line added
       3'b101: ALUResult = sum[31];     // slt
       default: ALUResult = 32'bx;
     endcase
