@@ -1,4 +1,4 @@
-module datapath(input  logic        clk, reset,
+module datapath(input  logic clk, reset,
     // The signals which is coming from Controller
     input  logic        PCWrite, AdrSrc, IRWrite,
     input  logic [1:0]  ResultSrc, ALUSrcA, ALUSrcB, ImmSrc,
@@ -28,7 +28,7 @@ module datapath(input  logic        clk, reset,
     // Instruction & Data Registers
 
     flopenr #(32) ir (clk, reset, IRWrite, ReadData, Instr);
-    flopenr #(32) oldpcreg (clk, reset, IRWrite, PC, OldPC);
+    flopenr #(32) oldpcreg (clk, reset, IRWrite, PC, OldPC); // !!!!!!!! BURAYA BAK NİYE DEĞİŞTİ ETKİSİ NE
     flopr #(32) datareg (clk, reset, ReadData, Data);
 
     // Register File & Sign Extension
@@ -42,7 +42,7 @@ module datapath(input  logic        clk, reset,
     flopr #(32) breg (clk, reset, WriteData, B); 
 
     mux3 #(32) srcamux (PC, OldPC, A, ALUSrcA, SrcA);
-    mux3 #(32) srcbmux (B, 32'd4, ImmExt, ALUSrcB, SrcB);
+    mux3 #(32) srcbmux (B, ImmExt, 32'd4, ALUSrcB, SrcB);
 
     // ALU & Result Logic
     alu alu (SrcA, SrcB, ALUControl, ALUResult, Zero);

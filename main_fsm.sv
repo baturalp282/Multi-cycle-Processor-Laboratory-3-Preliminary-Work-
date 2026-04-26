@@ -90,19 +90,19 @@ module main_fsm( input logic clk,
                 AdrSrc    = 0;
                 IRWrite   = 1;
                 ALUSrcA   = 2'b00;
-                ALUSrcB   = 2'b01;
+                ALUSrcB   = 2'b10;
                 ALUOp     = 2'b00;
                 ResultSrc = 2'b10;
                 PCUpdate  = 1;
             end
             DECODE: begin
                 ALUSrcA   = 2'b01;
-                ALUSrcB   = 2'b10;
+                ALUSrcB   = 2'b01; // dallanma için 2'b01 yaptık ki diğer aşamanın bilgisini extend'Den çeksin
                 ALUOp     = 2'b00;
             end
             MEMADR: begin
                 ALUSrcA   = 2'b10;
-                ALUSrcB   = 2'b10;
+                ALUSrcB   = 2'b01;
                 ALUOp     = 2'b00;
             end
             MEMREAD: begin
@@ -129,7 +129,7 @@ module main_fsm( input logic clk,
             end
             EXECUTEI: begin
                 ALUSrcA   = 2'b10;
-                ALUSrcB   = 2'b10;
+                ALUSrcB   = 2'b01;
                 ALUOp     = 2'b10;
             end
             JAL: begin

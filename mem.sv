@@ -7,7 +7,6 @@ module mem (input  logic        clk,
 
     logic [31:0] RAM[63:0]; 
 
-    
     initial begin
         $readmemh("memfile.txt", RAM);
     end
@@ -17,6 +16,7 @@ module mem (input  logic        clk,
     assign rd = RAM[a[31:2]]; 
 
     // Writing process
+    
     always_ff @(posedge clk) begin
         if (we)
             RAM[a[31:2]] <= wd;
